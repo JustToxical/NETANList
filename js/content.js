@@ -59,14 +59,14 @@ export async function fetchLeaderboard() {
 
         // Verification
         const verifier = Object.keys(scoreMap).find(
-            (u) => u.toLowerCase() === level.verifier.toLowerCase(),
-        ) || level.verifier;
-        scoreMap[verifier] ??= {
-            verified: [],
+            (u) => u.toLowerCase() === level.firstvictor.toLowerCase(),
+        ) || level.firstvictor;
+        scoreMap[firstvictor] ??= {
+            firstvictor: [],
             completed: [],
             progressed: [],
         };
-        const { verified } = scoreMap[verifier];
+        const { firstvictor } = scoreMap[firstvictor];
         verified.push({
             rank: rank + 1,
             level: level.name,
@@ -80,7 +80,7 @@ export async function fetchLeaderboard() {
                 (u) => u.toLowerCase() === record.user.toLowerCase(),
             ) || record.user;
             scoreMap[user] ??= {
-                verified: [],
+                firstvictor: [],
                 completed: [],
                 progressed: [],
             };
@@ -107,8 +107,8 @@ export async function fetchLeaderboard() {
 
     // Wrap in extra Object containing the user and total score
     const res = Object.entries(scoreMap).map(([user, scores]) => {
-        const { verified, completed, progressed } = scores;
-        const total = [verified, completed, progressed]
+        const { firstvictor, completed, progressed } = scores;
+        const total = [firstvictor, completed, progressed]
             .flat()
             .reduce((prev, cur) => prev + cur.score, 0);
 
