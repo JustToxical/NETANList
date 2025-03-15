@@ -58,7 +58,7 @@ export async function fetchLeaderboard() {
         }
 
         // Verification
-        const verifier = Object.keys(scoreMap).find(
+        const firstvictor = Object.keys(scoreMap).find(
             (u) => u.toLowerCase() === level.firstvictor.toLowerCase(),
         ) || level.firstvictor;
         scoreMap[firstvictor] ??= {
