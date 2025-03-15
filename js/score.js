@@ -1,39 +1,54 @@
-import Chart from 'chart.js/auto';
+/**
+ * Numbers of decimal digits to round to
+ */
+const scale = 3;
 
 /**
- * Function to compute the score based on the new formula
+ * Calculate the score awarded when having a certain percentage on a list level
  * @param {Number} rank Position on the list
+ * @param {Number} percent Percentage of completion
+ * @param {Number} minPercent Minimum percentage required
  * @returns {Number}
  */
-function computeScore(rank) {
-    if (rank > 150) return 0;
-    if (rank > 75) return 6.273 + 56.191 * Math.pow(2, (54.147 - (rank + 3.2)) * (Math.log(50) / 99));
-    if (rank > 55) return 212.61 * Math.pow(1.036, 1 - rank) + 25.071;
-    if (rank > 35) return 166.611 * Math.pow(1.0099685, Math.pow(2, -rank)) - 31.152;
-    return 149.61 * Math.pow(1.168, 1 - rank) + 100.39;
+export function score(rank, percent, minPercent) {
+    if (rank > 150) {
+        return 0;
+    }
+    if (rank > 75 && percent < 100) {
+        return 0;
+    }
+
+    // Old formula
+    /*
+    let score = (100 / Math.sqrt((rank - 1) / 50 + 0.444444) - 50) *
+        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
+    */
+    // New formula
+    let score = (-24.9975*Math.pow(rank-1, 0.4) + 350) *
+        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
+
+    score = Math.max(0, score);
+
+    if (percent != 100) {
+        return round(score - score / 3);
+    }
+
+    return Math.max(round(score), 0);
 }
 
-const ranks = Array.from({ length: 151 }, (_, i) => i);
-const scores = ranks.map(computeScore);
-
-const ctx = document.getElementById('scoreChart').getContext('2d');
-new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ranks,
-        datasets: [{
-            label: 'Score vs Rank',
-            data: scores,
-            borderColor: 'blue',
-            fill: false,
-        }],
-    },
-    options: {
-        responsive: true,
-        scales: {
-            x: { title: { display: true, text: 'Rank' } },
-            y: { title: { display: true, text: 'Score' } }
+export function round(num) {
+    if (!('' + num).includes('e')) {
+        return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
+    } else {
+        var arr = ('' + num).split('e');
+        var sig = '';
+        if (+arr[1] + scale > 0) {
+            sig = '+';
         }
+        return +(
+            Math.round(+arr[0] + 'e' + sig + (+arr[1] + scale)) +
+            'e-' +
+            scale
+        );
     }
-});
-
+}
