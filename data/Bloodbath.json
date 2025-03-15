@@ -1,0 +1,30 @@
+{
+    "id": 10565740,
+    "name": "Bloodbath",
+    "author": "Riot",
+    "creators": ["???"],
+    "verifier": "Abdul9531",
+    "verification": "",
+    "percentToQualify": "100",
+    "password": "???",
+    "records": [
+        {
+            "user": "Toxical",
+            "link": "https://www.youtube.com/watch?v=IAJRJCDCiMU",
+            "percent": 100,
+            "hz": 240
+        },
+        {
+            "user": "Milky",
+            "link": "https://www.youtube.com/watch?v=JS4YUjtrgI8",
+            "percent": 100,
+            "hz": 240
+        }.
+        {
+            "user": "owoNiiick",
+            "link": "https://www.youtube.com/watch?v=RvwIJD2kBjM",
+            "percent": 100,
+            "hz": 240
+        }
+    ]
+}
