@@ -1,7 +1,5 @@
 .nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     column-gap: 2rem;
 }
 .nav .nav__tab {
@@ -23,7 +21,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: auto;
 }
 .nav .nav__actions .nav__icon {
     height: 3rem;
