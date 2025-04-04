@@ -37,8 +37,10 @@ export function score(rank, percent, minPercent) {
 }
 
 export function round(num) {
+    const scale = 1;  // Set the scale for rounding to the nearest tenth
+
     if (!('' + num).includes('e')) {
-        return +(Math.round(num + 'e+' + scale) + 'e-' + scale);
+        return +(Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale));
     } else {
         var arr = ('' + num).split('e');
         var sig = '';
