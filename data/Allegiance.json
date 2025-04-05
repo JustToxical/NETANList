@@ -8,11 +8,11 @@
     "percentToQualify": "100",
     "password": "Free To Copy",
     "records": [
-    ]
-        {
+ {
             "user": "Perorbem",
             "link": "https://www.youtube.com/watch?v=S_aCpVoFZrU",
             "percent": 100,
             "hz": 240
         },
+    ]
 }
