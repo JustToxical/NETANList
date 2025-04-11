@@ -20,14 +20,21 @@ export function score(rank, percent, minPercent) {
 
     let baseScore;
 
-    // Use the new Desmos-based formula
-    if (rank > 55 && rank <= 150) {
+    // Desmos-based piecewise formula
+    if (rank > 0 && rank <= 20) {
+        baseScore = 149.61 * Math.pow(1.168, 1 - rank) + 100.39;
+    } else if (rank > 20 && rank <= 35) {
+        baseScore = 166.611 * Math.pow(1.0099685, 2 - rank) - 31.152;
+    } else if (rank > 35 && rank <= 55) {
+        baseScore = 212.61 * Math.pow(1.036, 1 - rank) + 25.071;
+    } else if (rank > 55 && rank <= 150) {
         baseScore = 56.191 * Math.pow(2, (54.147 - (rank + 3.2)) * (Math.log(60) / 99)) + 6.273;
     } else {
-        // Fallback to original formula (can be adjusted for other rank ranges)
+        // Fallback to the original formula if rank is outside the Desmos ranges
         baseScore = (-24.9975 * Math.pow(rank - 1, 0.4) + 200);
     }
 
+    // Apply percentage scaling
     let score = baseScore * ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
     score = Math.max(0, score);
 
