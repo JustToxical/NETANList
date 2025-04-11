@@ -11,38 +11,36 @@ const scale = 1;
  * @returns {Number}
  */
 export function score(rank, percent, minPercent) {
-    if (rank > 150) {
-        return 0;
-    }
-    if (rank > 75 && percent < 100) {
-        return 0;
-    }
+    if (percent > 100) percent = 100;
+    if (percent < minPercent) return 0;
 
     let baseScore;
 
-    // Desmos-based piecewise formula
-    if (rank > 0 && rank <= 20) {
-        baseScore = 149.61 * Math.pow(1.168, 1 - rank) + 100.39;
+    // Piecewise formula (1 ≤ rank ≤ 150)
+    if (rank >= 1 && rank <= 3) {
+        baseScore = (-18.2899079915 * rank) + 368.2899079915;
+    } else if (rank > 3 && rank <= 20) {
+        baseScore = ((326.1 * Math.exp(-0.0871 * rank)) + 51.09) * 1.037117142;
     } else if (rank > 20 && rank <= 35) {
-        baseScore = 166.611 * Math.pow(1.0099685, 2 - rank) - 31.152;
+        baseScore = ((250 - 83.389) * Math.pow(1.0099685, 2 - rank) - 31.152) * 1.0371139743;
     } else if (rank > 35 && rank <= 55) {
-        baseScore = 212.61 * Math.pow(1.036, 1 - rank) + 25.071;
+        baseScore = 1.0371139743 * ((212.61 * Math.pow(1.036, 1 - rank)) + 25.071);
     } else if (rank > 55 && rank <= 150) {
-        baseScore = 56.191 * Math.pow(2, (54.147 - (rank + 3.2)) * (Math.log(60) / 99)) + 6.273;
+        baseScore = 1.03905131 * ((185.7 * Math.exp(-0.02715 * rank)) + 14.84);
     } else {
-        // Fallback to the original formula if rank is outside the Desmos ranges (Dont Edit)
+        // Fallback formula (outside defined range)
         baseScore = (-24.9975 * Math.pow(rank - 1, 0.4) + 200);
     }
 
-    // Apply percentage scaling
-    let score = baseScore * ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
-    score = Math.max(0, score);
+    // Apply percent-based scaling
+    let scaledScore = baseScore * ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
+    scaledScore = Math.max(0, scaledScore);
 
     if (percent !== 100) {
-        return round(score - score / 3);
+        return round(scaledScore - scaledScore / 3);
     }
 
-    return Math.max(round(score), 0);
+    return round(scaledScore);
 }
 
 export function round(num) {
