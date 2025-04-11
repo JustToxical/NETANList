@@ -18,18 +18,20 @@ export function score(rank, percent, minPercent) {
         return 0;
     }
 
-    // Old formula
-    /*
-    let score = (100 / Math.sqrt((rank - 1) / 50 + 0.444444) - 50) *
-        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
-    */
-    // New formula
-    let score = (-24.9975*Math.pow(rank-1, 0.4) + 200) *
-        ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
+    let baseScore;
 
+    // Use the new Desmos-based formula
+    if (rank > 55 && rank <= 150) {
+        baseScore = 56.191 * Math.pow(2, (54.147 - (rank + 3.2)) * (Math.log(60) / 99)) + 6.273;
+    } else {
+        // Fallback to original formula (can be adjusted for other rank ranges)
+        baseScore = (-24.9975 * Math.pow(rank - 1, 0.4) + 200);
+    }
+
+    let score = baseScore * ((percent - (minPercent - 1)) / (100 - (minPercent - 1)));
     score = Math.max(0, score);
 
-    if (percent != 100) {
+    if (percent !== 100) {
         return round(score - score / 3);
     }
 
@@ -37,7 +39,7 @@ export function score(rank, percent, minPercent) {
 }
 
 export function round(num) {
-    const scale = 1;  // Set the scale for rounding to the nearest tenth
+    const scale = 1;
 
     if (!('' + num).includes('e')) {
         return +(Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale));
