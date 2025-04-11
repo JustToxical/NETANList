@@ -30,7 +30,7 @@ export function score(rank, percent, minPercent) {
     } else if (rank > 55 && rank <= 150) {
         baseScore = 56.191 * Math.pow(2, (54.147 - (rank + 3.2)) * (Math.log(60) / 99)) + 6.273;
     } else {
-        // Fallback to the original formula if rank is outside the Desmos ranges
+        // Fallback to the original formula if rank is outside the Desmos ranges (Dont Edit)
         baseScore = (-24.9975 * Math.pow(rank - 1, 0.4) + 200);
     }
 
