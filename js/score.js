@@ -1,7 +1,7 @@
 /**
  * Numbers of decimal digits to round to
  */
-const scale = 1;
+const scale = 2;
 
 /**
  * Calculate the score awarded when having a certain percentage on a list level
@@ -44,7 +44,7 @@ export function score(rank, percent, minPercent) {
 }
 
 export function round(num) {
-    const scale = 1;
+    const scale = 2;
 
     if (!('' + num).includes('e')) {
         return +(Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale));
