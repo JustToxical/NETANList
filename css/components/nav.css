@@ -1,10 +1,10 @@
 .nav {
     display: flex;
-    align-items: center;              /* 🆕 added */
-    justify-content: space-between;  /* 🆕 added */
+    align-items: center;
+    justify-content: space-between;
 }
 
-.nav__tabs {                          /* 🆕 new rule */
+.nav__tabs {
     display: flex;
     gap: 2rem;
 }
