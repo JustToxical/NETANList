@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "142536",
     "records": [
+                {
+            "user": "cosmicspacemeow",
+            "link": "https://www.youtube.com/watch?v=HGOqb1HSgdU",
+            "percent": 100,
+            "hz": 240
+        },
     ]
 }
