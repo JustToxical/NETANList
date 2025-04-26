@@ -17,19 +17,11 @@
         <link rel="stylesheet" type="text/css" href="/css/typography.css" />
         <link rel="stylesheet" type="text/css" href="/css/main.css" />
         <link rel="stylesheet" type="text/css" href="/css/pages/list.css" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/pages/leaderboard.css"
-        />
+        <link rel="stylesheet" type="text/css" href="/css/pages/leaderboard.css" />
         <link rel="stylesheet" type="text/css" href="/css/pages/roulette.css" />
         <link rel="stylesheet" type="text/css" href="/css/components/nav.css" />
         <link rel="stylesheet" type="text/css" href="/css/components/btn.css" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/components/tabs.css"
-        />
+        <link rel="stylesheet" type="text/css" href="/css/components/tabs.css" />
         <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
         <script src="https://unpkg.com/vue-router@4.0.14/dist/vue-router.global.prod.js"></script>
         <script type="module" src="/js/main.js"></script>
@@ -47,36 +39,32 @@
                 <router-link class="nav__tab" to="/leaderboard">
                     <span class="type-label-lg">Leaderboard</span>
                 </router-link>
-                                    <router-link class="nav__tab" to="/packs">
-        <span class="type-label-lg">Packs</span>
-    </router-link>
+                <router-link class="nav__tab" to="/packs">
+                    <span class="type-label-lg">Packs</span>
+                </router-link>
                 <router-link class="nav__tab" to="/roulette">
                     <span class="type-label-lg">Roulette</span>
                 </router-link>
                 <div class="nav__actions">
-                    <button
-                        class="nav__icon"
-                        @click.prevent="store.toggleDark()"
-                    >
-                        <img
-                            :src="store.dark ? '/assets/light.svg' : '/assets/dark.svg'"
-                            alt=""
-                        />
+                    <button class="nav__icon" @click.prevent="store.toggleDark()">
+                        <img :src="store.dark ? '/assets/light.svg' : '/assets/dark.svg'" alt="" />
                     </button>
-                    <!-- Replace the '#' with your discord server's invite-->
                     <a class="nav__icon" href="https://discord.gg/vFbAmNCYHe">
                         <img src="/assets/discord.svg" alt="Discord Logo" />
                     </a>
-                    <!-- List record submission form, add a link to replace the '#' when putting a link to your list submission form-->
                     <a
                         class="nav__cta type-label-lg"
                         href="https://docs.google.com/forms/d/e/1FAIpQLSdD3V_tJKW7ym2rWThoJYQHKT0GalqYMuCEF6wz_DTF6SL_ZA/viewform"
                         target="_blank"
-                        >Submit Record</a
-                    >
+                    >Submit Record</a>
                 </div>
             </nav>
         </header>
+
+        <!-- NEW IMAGE INSERTED HERE -->
+        <img src="/assets/NETAN LIST TOP 150.png" alt="NETAN LIST Top 150 Banner"
+            style="width:1024px; height:auto; display:block; margin:20px auto 0;" />
+
         <router-view :class="{ dark: store.dark }"></router-view>
     </body>
 </html>
