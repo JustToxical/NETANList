@@ -158,6 +158,7 @@
     position: relative;
 }
 
+/* Image on top of all containers */
 .page-list::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpgA8M4WAAAm9Pe?format=jpg&name=4096x4096');
@@ -168,12 +169,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 300px; /* adjust this height as needed */
-    z-index: 1;
-    pointer-events: none; /* allows clicks to pass through */
+    height: 400px; /* You can adjust the height here */
+    z-index: 10; /* Make sure it's on top */
+    pointer-events: none; /* Clicks pass through to underlying content */
 }
 
 .page-list > * {
     position: relative;
-    z-index: 2;
+    z-index: 11; /* Keep the content above the image */
 }
