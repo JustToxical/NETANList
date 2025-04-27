@@ -170,7 +170,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 400px; /* Image height */
+    height: 200px; /* Image height */
     z-index: 1;
     pointer-events: none; /* Allows clicking through to the content */
 }
