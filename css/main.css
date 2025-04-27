@@ -1,26 +1,26 @@
 :root {
-    --color-background: #1c1b1f; /* dark background */
-    --color-on-background: white; /* light text on dark background */
-    --color-background-hover: #27262c; /* dark hover */
-    --color-on-background-hover: white; /* light text on dark hover */
-    --color-primary: #283593; /* dark primary */
-    --color-on-primary: white; /* light text on dark primary */
-    --color-error: #de0000; /* error color remains the same */
-    --color-on-error: white; /* white text on error */
+    --color-background: white;
+    --color-on-background: black;
+    --color-background-hover: #eee;
+    --color-on-background-hover: black;
+    --color-primary: #0066ff;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
 }
 
 main.dark,
 header.dark {
     color-scheme: dark;
-    --color-background: white; /* light background */
-    --color-on-background: black; /* dark text on light background */
-    --color-background-hover: #eee; /* light hover */
-    --color-on-background-hover: black; /* dark text on light hover */
-    --color-primary: #0066ff; /* light primary */
-    --color-primary-disabled: #1f213c; /* dark disabled primary */
-    --color-on-primary: black; /* dark text on light primary */
-    --color-error: #de0000; /* error color remains the same */
-    --color-on-error: white; /* white text on error */
+    --color-background: #1c1b1f;
+    --color-on-background: white;
+    --color-background-hover: #27262c;
+    --color-on-background-hover: white;
+    --color-primary: #283593;
+    --color-primary-disabled: #1f213c;
+    --color-on-primary: white;
+    --color-error: #de0000;
+    --color-on-error: white;
 }
 
 html,
@@ -93,33 +93,4 @@ input[type="checkbox"] {
     width: 1.25rem;
     cursor: pointer;
     margin: 0;
-}
-
-/* Fix for reversed scrollbar color */
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) var(--color-background); /* Set colors for scrollbar */
-}
-
-body {
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) var(--color-background); /* Set colors for scrollbar */
-}
-
-/* Customize the appearance of the scrollbar for webkit browsers (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--color-background); /* Set the track color */
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary); /* Set the thumb color */
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-primary); /* Make thumb color stay consistent on hover */
 }
