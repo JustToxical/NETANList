@@ -3,7 +3,7 @@
     --color-on-background: white; /* light text on dark background */
     --color-background-hover: #27262c; /* dark hover */
     --color-on-background-hover: white; /* light text on dark hover */
-    --color-primary: #283593; /* dark primary */
+    --color-primary: #000000; /* dark primary */
     --color-on-primary: white; /* light text on dark primary */
     --color-error: #de0000; /* error color remains the same */
     --color-on-error: white; /* white text on error */
@@ -16,7 +16,7 @@ header.dark {
     --color-on-background: black; /* dark text on light background */
     --color-background-hover: #eee; /* light hover */
     --color-on-background-hover: black; /* dark text on light hover */
-    --color-primary: #0066ff; /* light primary */
+    --color-primary: #000000; /* light primary */
     --color-primary-disabled: #1f213c; /* dark disabled primary */
     --color-on-primary: black; /* dark text on light primary */
     --color-error: #de0000; /* error color remains the same */
