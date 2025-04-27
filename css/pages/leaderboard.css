@@ -92,3 +92,24 @@
 .page-leaderboard .player .table a:hover {
     text-decoration: underline;
 }
+/* Banner stuff */
+.page-leaderboard {
+    position: relative;
+    padding-top: 150px;
+}
+
+.page-leadboard::before {
+    content: "";
+    background-image: url('https://pbs.twimg.com/media/GpgA8M4WAAAm9Pe?format=jpg&name=4096x4096');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+    pointer-events: none;
+}
+
