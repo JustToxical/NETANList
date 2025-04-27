@@ -123,7 +123,7 @@ export default {
                 </div>
             </div>
         </main>
-    ,
+    `,
     data: () => ({
         list: [],
         editors: [],
