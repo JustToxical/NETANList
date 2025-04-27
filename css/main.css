@@ -3,7 +3,7 @@
     --color-on-background: white; /* light text on dark background */
     --color-background-hover: #27262c; /* dark hover */
     --color-on-background-hover: white; /* light text on dark hover */
-    --color-primary: #000000; /* dark primary */
+    --color-primary: #283593; /* dark primary */
     --color-on-primary: white; /* light text on dark primary */
     --color-error: #de0000; /* error color remains the same */
     --color-on-error: white; /* white text on error */
@@ -16,7 +16,7 @@ header.dark {
     --color-on-background: black; /* dark text on light background */
     --color-background-hover: #eee; /* light hover */
     --color-on-background-hover: black; /* dark text on light hover */
-    --color-primary: #000000; /* light primary */
+    --color-primary: #0066ff; /* light primary */
     --color-primary-disabled: #1f213c; /* dark disabled primary */
     --color-on-primary: black; /* dark text on light primary */
     --color-error: #de0000; /* error color remains the same */
@@ -66,13 +66,8 @@ header .logo {
     align-items: flex-end;
     gap: 1rem;
 }
-
 header .nav {
     flex: 1;
-}
-
-header .nav a {
-    color: var(--color-on-primary); /* Ensure links in header are white in light mode */
 }
 
 main {
@@ -82,7 +77,6 @@ main {
     grid-template-rows: minmax(0, 1fr);
     column-gap: 2rem;
 }
-
 main > div {
     overflow-y: auto;
 }
@@ -101,24 +95,31 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-/* Flip the colors of all SVGs and icons */
-svg,
-img {
-    fill: var(--color-on-background); /* Apply the appropriate color to SVG fill */
-    stroke: var(--color-on-background); /* Ensure stroke is also flipped */
+/* Fix for reversed scrollbar color */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-background); /* Set colors for scrollbar */
 }
 
-/* Additional icon styling if needed for different elements */
-.icon {
-    color: var(--color-on-background);
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-background); /* Set colors for scrollbar */
 }
 
-/* Specific styles for the light mode (use this only when light mode is active) */
-body:not(.dark) header {
-    color: var(--color-on-primary); /* Text in header should be white in light mode */
+/* Customize the appearance of the scrollbar for webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
 }
 
-body:not(.dark) svg,
-body:not(.dark) .icon {
-    fill: var(--color-on-background); /* Flip the SVG fill and icon color to dark */
+::-webkit-scrollbar-track {
+    background: var(--color-background); /* Set the track color */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary); /* Set the thumb color */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary); /* Make thumb color stay consistent on hover */
 }
