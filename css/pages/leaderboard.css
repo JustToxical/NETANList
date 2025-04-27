@@ -93,25 +93,23 @@
     text-decoration: underline;
 }
 
-/* Add the image on top, above everything else */
-.page-leaderboard {
-    position: relative;
-    padding-top: 150px; /* Move the content down by the image height */
-}
-
-/* The image */
+/* 🔵 Add the background image across the FULL screen */
 .page-leaderboard::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: 100% 100%;
+    background-size: 100% 150px; /* Stretch to fit width without cutting */
     background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
+    background-position: top center;
+    position: fixed; /* 🌟 This is key: fixed to the viewport */
     top: 0;
-    left: 50%;
-    transform: translateX(-50%); /* Center the background fully */
-    width: 100vw; /* Full viewport width */
-    height: 150px; /* Image height */
-    z-index: 1;
-    pointer-events: none; /* Allows clicking through to the content */
+    left: 0;
+    width: 100vw; /* 100% of viewport */
+    height: 150px;
+    z-index: -1; /* Put behind everything */
+    pointer-events: none; /* Let user click through */
+}
+
+/* 🔵 Push content down to avoid overlap with image */
+.page-leaderboard-container {
+    padding-top: 150px;
 }
