@@ -89,6 +89,10 @@
     width: 100%;
 }
 
+.page-leaderboard .player .table a:hover {
+    text-decoration: underline;
+}
+
 /* Add the image on top, above everything else */
 .page-leaderboard {
     position: relative;
@@ -109,8 +113,4 @@
     height: 150px; /* Image height */
     z-index: 1;
     pointer-events: none; /* Allows clicking through to the content */
-}
-
-.page-leaderboard .player .table a:hover {
-    text-decoration: underline;
 }
