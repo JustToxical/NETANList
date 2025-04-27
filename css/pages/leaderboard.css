@@ -90,13 +90,13 @@
 }
 
 /* Add the image on top, above everything else */
-.page-list {
+.page-leaderboard {
     position: relative;
     padding-top: 150px; /* Move the content down by the image height */
 }
 
 /* The image */
-.page-list::before {
+.page-leaderboard::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
     background-size: cover;
