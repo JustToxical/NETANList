@@ -156,7 +156,7 @@
 /* Add the image on top, above everything else */
 .page-list {
     position: relative;
-    padding-top: 200px; /* Move the content down by the image height */
+    padding-top: 150px; /* Move the content down by the image height */
 }
 
 /* The image */
@@ -170,7 +170,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 200px; /* Image height */
+    height: 150px; /* Image height */
     z-index: 1;
     pointer-events: none; /* Allows clicking through to the content */
 }
