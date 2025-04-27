@@ -98,7 +98,7 @@
     padding-top: 150px;
 }
 
-.page-leadboard::before {
+.page-leaderboard::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpgA8M4WAAAm9Pe?format=jpg&name=4096x4096');
     background-size: cover;
