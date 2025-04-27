@@ -92,25 +92,3 @@
 .page-leaderboard .player .table a:hover {
     text-decoration: underline;
 }
-
-/* 🔥 Fixed Background Image */
-.page-leaderboard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%); /* Center it */
-    width: 100vw; /* Full viewport width */
-    height: 150px;
-    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 0; /* Behind the real content */
-    pointer-events: none;
-}
-
-/* 🔵 Push content down to avoid overlap with image */
-.page-leaderboard-container {
-    padding-top: 150px;
-}
