@@ -1,82 +1,55 @@
-/* Force the page container to take the whole screen width */
+make it so the image on the top (the banner) is stretched to very end sides of the website page (.css)
+
+here is my current code:
+
 .page-leaderboard-container {
     display: block;
-    max-width: 80rem;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 150px; /* Make space for the banner */
 }
-
-/* Banner setup using pseudo-element */
-.page-leaderboard-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full width */
-    height: 150px;
-    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1; /* Behind everything */
-}
-
-/* Main content layout */
 .page-leaderboard {
     height: 100%;
     display: grid;
     grid-template-columns: minmax(24rem, 2fr) 3fr;
     grid-template-rows: max-content 1fr;
     column-gap: 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
 }
-
-/* Board and Player containers */
 .page-leaderboard > div {
     overflow-y: auto;
 }
-
 .page-leaderboard .error-container {
     grid-row: 1;
     grid-column: 1 / span 2;
 }
-
 .page-leaderboard .error-container .error {
     padding: 1rem;
     background-color: var(--color-error);
     color: var(--color-on-error);
 }
-
 .page-leaderboard .board-container,
 .page-leaderboard .player-container {
     grid-row: 2;
     padding-block: 2rem;
 }
-
 .page-leaderboard .board-container {
     padding-inline: 1rem;
 }
-
 .page-leaderboard .board {
     table-layout: auto;
     display: block;
     width: 100%;
 }
-
 .page-leaderboard .board .rank {
     padding-block: 1rem;
     text-align: end;
 }
-
 .page-leaderboard .board .total {
     padding: 1rem;
     text-align: end;
 }
-
 .page-leaderboard .board .user {
     width: 100%;
 }
-
 .page-leaderboard .board .user button {
     background-color: var(--color-background);
     color: var(--color-on-background);
@@ -87,47 +60,59 @@
     word-break: normal;
     overflow-wrap: anywhere;
 }
-
 .page-leaderboard .board .user button:hover {
     background-color: var(--color-background-hover);
     color: var(--color-on-background-hover);
     cursor: pointer;
 }
-
 .page-leaderboard .board .user.active button {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
 }
-
 .page-leaderboard .player {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding-right: 2rem;
 }
-
 .page-leaderboard .player .table {
     table-layout: fixed;
 }
-
 .page-leaderboard .player .table tr td:not(:last-child) {
     padding-right: 2rem;
 }
-
 .page-leaderboard .player .table p,
 .page-leaderboard .player .table a {
     padding-block: 1rem;
 }
-
 .page-leaderboard .player .table .rank p,
 .page-leaderboard .player .table .score p {
     text-align: end;
 }
-
 .page-leaderboard .player .table .level {
     width: 100%;
 }
 
 .page-leaderboard .player .table a:hover {
     text-decoration: underline;
+}
+/* Banner stuff */
+.page-leaderboard {
+    position: relative;
+    padding-top: 150px;
+}
+
+.page-leaderboard::before {
+    content: "";
+    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+    pointer-events: none;
 }
