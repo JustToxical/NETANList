@@ -93,20 +93,21 @@
     text-decoration: underline;
 }
 
-/* 🔵 Add the background image across the FULL screen */
+/* 🔥 Fixed Background Image */
 .page-leaderboard::before {
     content: "";
-    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: 100% 150px; /* Stretch to fit width without cutting */
-    background-repeat: no-repeat;
-    background-position: top center;
-    position: fixed; /* 🌟 This is key: fixed to the viewport */
+    position: absolute;
     top: 0;
-    left: 0;
-    width: 100vw; /* 100% of viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center it */
+    width: 100vw; /* Full viewport width */
     height: 150px;
-    z-index: -1; /* Put behind everything */
-    pointer-events: none; /* Let user click through */
+    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0; /* Behind the real content */
+    pointer-events: none;
 }
 
 /* 🔵 Push content down to avoid overlap with image */
