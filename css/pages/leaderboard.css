@@ -1,24 +1,41 @@
-/* General Page Structure */
+/* Force the page container to take the whole screen width */
 .page-leaderboard-container {
     display: block;
+    max-width: 80rem;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 150px; /* Make space for the banner */
 }
 
+/* Banner setup using pseudo-element */
+.page-leaderboard-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full width */
+    height: 150px;
+    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1; /* Behind everything */
+}
+
+/* Main content layout */
 .page-leaderboard {
     height: 100%;
     display: grid;
     grid-template-columns: minmax(24rem, 2fr) 3fr;
     grid-template-rows: max-content 1fr;
     column-gap: 2rem;
-    max-width: 80rem;
-    margin: 0 auto;
-    padding-top: 2rem; /* Add padding now that banner is separate */
 }
 
+/* Board and Player containers */
 .page-leaderboard > div {
     overflow-y: auto;
 }
 
-/* Error Container */
 .page-leaderboard .error-container {
     grid-row: 1;
     grid-column: 1 / span 2;
@@ -30,7 +47,6 @@
     color: var(--color-on-error);
 }
 
-/* Main Board and Player Sections */
 .page-leaderboard .board-container,
 .page-leaderboard .player-container {
     grid-row: 2;
@@ -114,16 +130,4 @@
 
 .page-leaderboard .player .table a:hover {
     text-decoration: underline;
-}
-
-/* Full Width Banner */
-.page-banner {
-    position: relative;
-    width: 100%;
-    height: 150px;
-    background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
 }
