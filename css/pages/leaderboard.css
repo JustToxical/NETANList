@@ -93,12 +93,13 @@
     text-decoration: underline;
 }
 /* Banner stuff */
-.page-leaderboard {
-    position: relative;
-    padding-top: 150px;
+.page-leaderboard-container {
+    display: block;
+    position: relative; /* <- Needed to place the ::before relative to this */
+    padding-top: 150px;  /* <- So content doesn't overlap banner */
 }
 
-.page-leaderboard::before {
+.page-leaderboard-container::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
     background-size: cover;
@@ -107,8 +108,21 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw; /* <- FULL SCREEN WIDTH */
     height: 150px;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
+}
+
+/* Now inside, the page stays centered */
+.page-leaderboard {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(24rem, 2fr) 3fr;
+    grid-template-rows: max-content 1fr;
+    column-gap: 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* <- Make sure content is above the banner */
 }
