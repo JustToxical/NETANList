@@ -1,18 +1,3 @@
-.page-list .banner-container {
-    background-color: var(--color-surface);
-    padding: 2rem 0;
-    display: flex;
-    justify-content: center;
-}
-
-.page-list .banner-container img {
-    width: 100%;
-    max-width: 1920px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0.75rem;
-}
-
 .page-list .list-container,
 .page-list .level-container,
 .page-list .meta-container {
