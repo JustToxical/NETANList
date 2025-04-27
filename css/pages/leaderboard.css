@@ -101,7 +101,7 @@
 
 .page-leaderboard-container::before {
     content: "";
-    background-image: url('https://pbs.twimg.com/media/Gpjlq0HXwAADR4B?format=jpg&name=4096x4096');
+    background-image: url('https://pbs.twimg.com/media/GpjoZZmXcAArUs2?format=jpg&name=4096x4096');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
