@@ -103,7 +103,7 @@
 .page-leaderboard::before {
     content: "";
     background-image: url('https://pbs.twimg.com/media/GpjTKb7XcAAOJg9?format=jpg&name=4096x4096');
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
