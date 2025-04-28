@@ -1,4 +1,3 @@
-import levels from "../data/_legacy.json"; // adjust the path if needed
 import { store } from "../main.js";
 import { embed } from "../util.js";
 import { score } from "../score.js";
@@ -17,7 +16,7 @@ export default {
     components: { Spinner, LevelAuthors },
     template: `
         <main v-if="loading">
-            <Spinner></Spinner>
+            <Spinner />
         </main>
         <main v-else class="page-list">
             <div class="list-container">
@@ -93,18 +92,21 @@ export default {
                     <p>(ノಠ益ಠ)ノ彡┻━┻</p>
                 </div>
             </div>
-
-            <!-- Meta section unchanged -->
         </main>
     `,
     data: () => ({
-        rankedList: levels.slice(0, 150),
-        legacyList: levels.slice(150),
+        list: [],
         selected: 0,
-        loading: false,
+        loading: true,
         store,
     }),
     computed: {
+        rankedList() {
+            return this.list.slice(0, 150);
+        },
+        legacyList() {
+            return this.list.slice(150);
+        },
         level() {
             if (this.selected < this.rankedList.length) {
                 return this.rankedList[this.selected];
@@ -131,5 +133,14 @@ export default {
         selectLegacy(j) {
             this.selected = j + this.rankedList.length;
         }
+    },
+    async mounted() {
+        try {
+            const res = await fetch("/data/_levels.json"); // <--- make sure file is inside /data folder
+            this.list = await res.json();
+        } catch (error) {
+            console.error("Failed to load levels:", error);
+        }
+        this.loading = false;
     }
 };
