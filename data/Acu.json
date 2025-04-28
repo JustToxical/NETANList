@@ -36,7 +36,7 @@
             "user": "TherealDDS",
             "link": "https://www.youtube.com/watch?v=AE-QAADSBdk",
             "percent": 100,
-            "hz": 240
+            "hz": 180
         },
                           {
             "user": "Toxical",
@@ -47,6 +47,12 @@
                           {
             "user": "cosmicspacemeow",
             "link": "https://www.youtube.com/watch?v=2vVzTMquzoE",
+            "percent": 100,
+            "hz": 60
+        },
+                                 {
+            "user": "Kuebic",
+            "link": "",
             "percent": 100,
             "hz": 240
         }
