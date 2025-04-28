@@ -24,31 +24,33 @@ export default {
             <div class="list-container">
                 <div class="list-section">
                     <table class="list" v-if="rankedList.length">
-                        <tr v-for="([level, err], i) in rankedList">
+                        <tr v-for="([level, err], i) in rankedList" :key="i">
                             <td class="rank">
                                 <p class="type-label-lg">#{{ i + 1 }}</p>
                             </td>
                             <td class="level" :class="{ 'active': selected == i, 'error': !level }">
                                 <button @click="selectRanked(i)">
-                                    <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                                    <span class="type-label-lg">{{ level?.name || `Error (${err}.json)` }}</span>
                                 </button>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div class="legacy-section">
-                    <table class="list legacy" v-if="legacyList.length">
-                        <tr v-for="([level, err], j) in legacyList">
-                            <td class="rank">
-                                <p class="type-label-lg">Legacy</p>
-                            </td>
-                            <td class="level" :class="{ 'active': selected == j + 150, 'error': !level }">
-                                <button @click="selectLegacy(j)">
-                                    <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
+
+                <div class="legacy-section" v-if="legacyList.length">
+                    <div class="legacy-title">Legacy</div>
+                    <div class="legacy-levels">
+                        <div
+                            class="level"
+                            v-for="([level, err], j) in legacyList"
+                            :class="{ 'active': selected == j + 150, 'error': !level }"
+                            :key="j"
+                        >
+                            <button @click="selectLegacy(j)">
+                                <span class="type-label-lg">{{ level?.name || `Error (${err}.json)` }}</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -84,7 +86,7 @@ export default {
                                 <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
                             </td>
                             <td class="mobile">
-                                <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
+                                <img v-if="record.mobile" :src="`/assets/phone-landscape${store.dark ? '-dark' : ''}.svg`" alt="Mobile">
                             </td>
                             <td class="fps">
                                 <p>{{ record.hz }}FPS</p>
@@ -106,7 +108,7 @@ export default {
                         <h3>List Editors</h3>
                         <ol class="editors">
                             <li v-for="editor in editors">
-                                <img :src="\`/assets/\${roleIconMap[editor.role]}\${store.dark ? '-dark' : ''}.svg\`" :alt="editor.role">
+                                <img :src="`/assets/${roleIconMap[editor.role]}${store.dark ? '-dark' : ''}.svg`" :alt="editor.role">
                                 <a v-if="editor.link" class="type-label-lg link" target="_blank" :href="editor.link">{{ editor.name }}</a>
                                 <p v-else>{{ editor.name }}</p>
                             </li>
