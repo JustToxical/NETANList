@@ -94,6 +94,11 @@ export default {
                                 <p v-else>{{ editor.name }}</p>
                             </li>
                         </ol>
+                                            </template>
+                    <h3>Reminder</h3>
+                           <p>
+                        Some levels in the list have a different video displayed instead of the first victor's. This is because the original victor's video was either not published publicly or not uploaded at all.
+                    </p>
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
