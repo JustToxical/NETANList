@@ -1,4 +1,4 @@
-import levels from "../data/_levels.json"; // adjust the path if needed
+import levels from "../data/_legacy.json"; // adjust the path if needed
 import { store } from "../main.js";
 import { embed } from "../util.js";
 import { score } from "../score.js";
