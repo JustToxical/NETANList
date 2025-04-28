@@ -1,55 +1,19 @@
-.page-list {
-    position: relative;
-    padding-top: 150px;
-}
-
-/* Background image at top */
-.page-list::before {
-    content: "";
-    background-image: url('https://pbs.twimg.com/media/GpgA8M4WAAAm9Pe?format=jpg&name=4096x4096');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Sections */
-.page-list .list-section {
-    background-color: var(--color-background);
-}
-
-.page-list .legacy-section {
-    background-color: var(--color-surface);
-    padding: 2rem 1rem; /* Match padding like list-section */
-}
-
-/* Containers */
 .page-list .list-container,
 .page-list .level-container,
 .page-list .meta-container {
     padding-block: 2rem;
 }
 
-/* List container */
 .page-list .list-container {
     padding-inline: 1rem;
 }
 
-/* Meta container */
 .page-list .meta-container {
     padding-right: 2rem;
 }
 
-/* List table */
 .page-list .list {
     table-layout: auto;
-    width: 100%;
 }
 
 .page-list .list .rank {
@@ -61,7 +25,6 @@
     width: 100%;
 }
 
-/* List level buttons */
 .page-list .list .level button {
     background-color: var(--color-background);
     color: var(--color-on-background);
@@ -72,7 +35,6 @@
     word-break: normal;
     overflow-wrap: anywhere;
     cursor: pointer;
-    width: 100%;
 }
 
 .page-list .list .level.error button {
@@ -91,46 +53,6 @@
     color: var(--color-on-primary);
 }
 
-/* Legacy section title */
-.page-list .legacy-section .legacy-title {
-    text-align: center;
-    font-weight: 900;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-/* Legacy section levels */
-.page-list .legacy-section .legacy-levels {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-/* Legacy buttons */
-.page-list .legacy-section .legacy-levels .level button {
-    background-color: var(--color-surface);
-    color: var(--color-on-surface);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    text-align: start;
-    word-break: normal;
-    overflow-wrap: anywhere;
-    cursor: pointer;
-    width: 100%;
-}
-
-.page-list .legacy-section .legacy-levels .level button:hover {
-    background-color: var(--color-surface-hover);
-    color: var(--color-on-surface-hover);
-}
-
-.page-list .legacy-section .legacy-levels .level.active button {
-    background-color: var(--color-primary);
-    color: var(--color-on-primary);
-}
-
-/* Level section */
 .page-list .level-container .level {
     display: flex;
     flex-direction: column;
@@ -139,7 +61,6 @@
     max-width: 48rem;
 }
 
-/* Level Authors */
 .page-list .level-container .level .level-authors {
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -147,14 +68,10 @@
     gap: 1rem;
 }
 
-/* Video iframe */
 .page-list .level-container .level .video {
     aspect-ratio: 16/9;
-    width: 100%;
-    border: none;
 }
 
-/* Stats list */
 .page-list .level-container .level .stats {
     display: flex;
     justify-content: space-evenly;
@@ -169,10 +86,8 @@
     gap: 1rem;
 }
 
-/* Records table */
 .page-list .level-container .level .records {
     table-layout: fixed;
-    width: 100%;
 }
 
 .page-list .level-container .level .records tr td:not(:last-child) {
@@ -194,13 +109,11 @@
     text-align: end;
 }
 
-/* Hover effects */
 .page-list .meta-container .og a:hover,
 .page-list .level-container .level .records a:hover {
     text-decoration: underline;
 }
 
-/* Meta section */
 .page-list .meta {
     display: flex;
     flex-direction: column;
@@ -220,7 +133,6 @@
     border-radius: 0.5rem;
 }
 
-/* Editors list */
 .page-list .meta .editors {
     display: flex;
     flex-direction: column;
@@ -239,4 +151,25 @@
 
 .page-list .meta .editors li a:hover {
     text-decoration: underline;
+}
+
+.page-list {
+    position: relative;
+    padding-top: 150px;
+}
+
+/* The image */
+.page-list::before {
+    content: "";
+    background-image: url('https://pbs.twimg.com/media/GpgA8M4WAAAm9Pe?format=jpg&name=4096x4096');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 1;
+    pointer-events: none;
 }
