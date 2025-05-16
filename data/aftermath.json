@@ -8,6 +8,12 @@
     "percentToQualify": "100",
     "password": "???",
     "records": [
+          {
+            "user": "TheCannonCarl",
+            "link": "https://www.youtube.com/watch?v=zzk8vUZV4v4&t=187s",
+            "percent": 100,
+            "hz": 240
+        },
         {
             "user": "Toxical",
             "link": "https://www.youtube.com/watch?v=Gc3IkaRkioM",
