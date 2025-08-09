@@ -1,1 +1,12 @@
-
+{
+    "id": 1,
+    "name": "Test",
+    "author": "Toby Fox",
+    "creators": ["Toby Fox", "GuitarHeroStyles"],
+    "verifier": "Toxical",
+    "verification": "https://www.youtube.com/watch?v=dxJK4PcCVcU",
+    "percentToQualify": "100",
+    "password": "Free To Copy",
+    "records": [
+    ]
+}
