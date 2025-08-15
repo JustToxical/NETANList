@@ -173,8 +173,3 @@
     z-index: 1;
     pointer-events: none;
 }
-
-.main-list-title,
-.legacy-list-title {
-  margin-bottom: 1rem;
-}
