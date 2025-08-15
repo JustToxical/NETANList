@@ -41,7 +41,7 @@ export default {
 <table class="list" v-if="legacyList.length">
 <tr v-for="([level, err], i) in legacyList">
                         <td class="rank">
-                            <p class="type-label-lg">—⎯—</p>
+                            <p class="type-label-lg">╍╍</p>
                         </td>
                         <td class="level" :class="{ 'active': selected == i + mainList.length, 'error': !level }">
                             <button @click="selected = i + mainList.length">
