@@ -37,7 +37,7 @@ export default {
                         </td>
                     </tr>
 </table>
-<h2 class="section-title">Legacy</h2>
+<h2 class="section-title" style="margin-bottom: 1rem;">Legacy</h2>
 <table class="list" v-if="legacyList.length">
 <tr v-for="([level, err], i) in legacyList">
                         <td class="rank">
