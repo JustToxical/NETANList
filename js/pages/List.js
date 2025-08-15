@@ -157,10 +157,10 @@ export default {
     computed: {
 
         mainList() {
-            return this.list.filter((_, i) => i + 1 <= 150);
+            return this.list.filter((_, i) => i + 1 <= 100);
         },
         legacyList() {
-            return this.list.filter((_, i) => i + 1 > 150);
+            return this.list.filter((_, i) => i + 1 > 100);
         },
 
         level() {
