@@ -15,16 +15,6 @@ const roleIconMap = {
 };
 
 export default {
-
-    computed: {
-        mainList() {
-            return this.list.filter((_, i) => i + 1 <= 150);
-        },
-        legacyList() {
-            return this.list.filter((_, i) => i + 1 > 150);
-        }
-    },
-
     components: { Spinner, LevelAuthors },
     template: `
         <main v-if="loading">
@@ -32,35 +22,19 @@ export default {
         </main>
         <main v-else class="page-list">
             <div class="list-container">
-                
-<h2>Main List</h2>
-<table class="list" v-if="mainList.length">
-    <tr v-for="([level, err], i) in mainList" :key="'main-' + i">
-        <td class="rank">
-            <p class="type-label-lg">#{{ i + 1 }}</p>
-        </td>
-        <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-            <button @click="selected = i">
-                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
-            </button>
-        </td>
-    </tr>
-</table>
-
-<h2>Legacy Section</h2>
-<table class="list" v-if="legacyList.length">
-    <tr v-for="([level, err], i) in legacyList" :key="'legacy-' + i">
-        <td class="rank">
-            <p class="type-label-lg">#{{ i + 151 }}</p>
-        </td>
-        <td class="level" :class="{ 'active': selected == i + 150, 'error': !level }">
-            <button @click="selected = i + 150">
-                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
-            </button>
-        </td>
-    </tr>
-</table>
-
+                <table class="list" v-if="list">
+                    <tr v-for="([level, err], i) in list">
+                        <td class="rank">
+                            <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
+                            <p v-else class="type-label-lg">Legacy</p>
+                        </td>
+                        <td class="level" :class="{ 'active': selected == i, 'error': !level }">
+                            <button @click="selected = i">
+                                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="level-container">
                 <div class="level" v-if="level">
