@@ -25,7 +25,7 @@ export function score(rank, percent, minPercent) {
         baseScore = ((250 - 83.389) * Math.pow(1.0099685, 2 - rank) - 31.152) * 1.0371139743;
     } else if (rank > 35 && rank <= 55) {
         baseScore = 1.0371139743 * ((212.61 * Math.pow(1.036, 1 - rank)) + 25.071);
-    } else if (rank > 55 && rank <= 100) {
+    } else if (rank > 55 && rank <= 150) {
         baseScore = 1.03905131 * ((185.7 * Math.exp(-0.02715 * rank)) + 14.84);
     } else {
         // Fallback formula (outside defined range)
