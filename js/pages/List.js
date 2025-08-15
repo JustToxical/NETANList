@@ -23,7 +23,7 @@ export default {
         <main v-else class="page-list">
             <div class="list-container">
                 
-<h2 class="section-title">Main List</h2>
+<h2 class="section-title"></h2>
 <table class="list" v-if="mainList.length">
 <tr v-for="([level, err], i) in mainList">
                         <td class="rank">
@@ -37,7 +37,7 @@ export default {
                         </td>
                     </tr>
 </table>
-<h2 class="section-title">Legacy Section</h2>
+<h2 class="section-title">Legacy</h2>
 <table class="list" v-if="legacyList.length">
 <tr v-for="([level, err], i) in legacyList">
                         <td class="rank">
