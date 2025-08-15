@@ -29,7 +29,7 @@ export function score(rank, percent, minPercent) {
         baseScore = 1.03905131 * ((185.7 * Math.exp(-0.02715 * rank)) + 14.84);
     } else {
         // Fallback formula (outside defined range)
-        baseScore = (-24.9975 * Math.pow(rank - 1, 0.4) + 200);
+        baseScore = 0;
     }
 
     // Apply percent-based scaling
