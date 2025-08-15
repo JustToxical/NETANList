@@ -22,8 +22,10 @@ export default {
         </main>
         <main v-else class="page-list">
             <div class="list-container">
-                <table class="list" v-if="list">
-                    <tr v-for="([level, err], i) in list">
+                
+<h2 class="section-title">Main List</h2>
+<table class="list" v-if="mainList.length">
+<tr v-for="([level, err], i) in mainList">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
@@ -34,7 +36,21 @@ export default {
                             </button>
                         </td>
                     </tr>
-                </table>
+</table>
+<h2 class="section-title">Legacy Section</h2>
+<table class="list" v-if="legacyList.length">
+<tr v-for="([level, err], i) in legacyList">
+                        <td class="rank">
+                            <p class="type-label-lg">Legacy</p>
+                        </td>
+                        <td class="level" :class="{ 'active': selected == i + mainList.length, 'error': !level }">
+                            <button @click="selected = i + mainList.length">
+                                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                            </button>
+                        </td>
+                    </tr>
+</table>
+
             </div>
             <div class="level-container">
                 <div class="level" v-if="level">
@@ -139,6 +155,14 @@ export default {
         store
     }),
     computed: {
+
+        mainList() {
+            return this.list.filter((_, i) => i + 1 <= 150);
+        },
+        legacyList() {
+            return this.list.filter((_, i) => i + 1 > 150);
+        },
+
         level() {
             return this.list[this.selected][0];
         },
