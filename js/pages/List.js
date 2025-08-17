@@ -23,7 +23,6 @@ export default {
         <main v-else class="page-list">
             <div class="list-container">
                 
-                <!-- 🔎 Search bar -->
                 <input 
                     type="text" 
                     v-model="searchQuery" 
@@ -162,13 +161,12 @@ export default {
         errors: [],
         roleIconMap,
         store,
-        searchQuery: "" // 🔎 reactive search
+        searchQuery: ""
     }),
     computed: {
         mainList() {
-            // keep original index so ranks stay correct
             return this.list
-                .map((entry, i) => [entry, i]) // entry = [level, err]
+                .map((entry, i) => [entry, i])
                 .filter(([_, i]) => i + 1 <= 150)
                 .filter(([[level], _]) =>
                     !this.searchQuery || level?.name?.toLowerCase().includes(this.searchQuery.toLowerCase())
