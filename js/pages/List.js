@@ -33,13 +33,14 @@ export default {
 
                 <h2 class="section-title"></h2>
                 <table class="list" v-if="mainList.length">
-                    <tr v-for="([level, err], i) in mainList">
+                    <!-- NOTE: destructure as [[level, err], originalIndex] -->
+                    <tr v-for="([[level, err], originalIndex], i) in mainList" :key="originalIndex">
                         <td class="rank">
-                            <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
+                            <p v-if="originalIndex + 1 <= 150" class="type-label-lg">#{{ originalIndex + 1 }}</p>
                             <p v-else class="type-label-lg">——</p>
                         </td>
-                        <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button @click="selected = i">
+                        <td class="level" :class="{ 'active': selected === originalIndex, 'error': !level }">
+                            <button @click="selected = originalIndex">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                         </td>
@@ -48,12 +49,12 @@ export default {
 
                 <h2 class="section-title" style="margin-top: 1rem; margin-bottom: 2rem;">Legacy</h2>
                 <table class="list" v-if="legacyList.length">
-                    <tr v-for="([level, err], i) in legacyList">
+                    <tr v-for="([[level, err], originalIndex], i) in legacyList" :key="originalIndex">
                         <td class="rank">
                             <p class="type-label-lg">———</p>
                         </td>
-                        <td class="level" :class="{ 'active': selected == i + mainList.length, 'error': !level }">
-                            <button @click="selected = i + mainList.length">
+                        <td class="level" :class="{ 'active': selected === originalIndex, 'error': !level }">
+                            <button @click="selected = originalIndex">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                         </td>
@@ -82,7 +83,7 @@ export default {
                     </ul>
                     <h2>Records</h2>
                     <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> or better to qualify</p>
-                    <p v-else-if="selected +1 <= 150"><strong>100%</strong> or better to qualify</p>
+                    <p v-else-if="selected + 1 <= 150"><strong>100%</strong> or better to qualify</p>
                     <p v-else>This level does not accept new records.</p>
                     <table class="records">
                         <tr v-for="record in level.records" class="record">
@@ -161,68 +162,55 @@ export default {
         errors: [],
         roleIconMap,
         store,
-        searchQuery: "" // 🔎 new reactive property
+        searchQuery: "" // 🔎 reactive search
     }),
-computed: {
-    mainList() {
-        // include original index so rank numbers don't break
-        return this.list
-            .map((entry, i) => [entry, i]) // entry = [level, err], i = true index
-            .filter(([_, i]) => i + 1 <= 150)
-            .filter(([[level], _]) => 
-                !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    computed: {
+        mainList() {
+            // keep original index so ranks stay correct
+            return this.list
+                .map((entry, i) => [entry, i]) // entry = [level, err]
+                .filter(([_, i]) => i + 1 <= 150)
+                .filter(([[level], _]) =>
+                    !this.searchQuery || level?.name?.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
+        },
+        legacyList() {
+            return this.list
+                .map((entry, i) => [entry, i])
+                .filter(([_, i]) => i + 1 > 150)
+                .filter(([[level], _]) =>
+                    !this.searchQuery || level?.name?.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
+        },
+        level() {
+            return this.list[this.selected]?.[0];
+        },
+        video() {
+            if (!this.level?.showcase) {
+                return embed(this.level?.verification);
+            }
+            return embed(this.toggledShowcase ? this.level.showcase : this.level.verification);
+        },
+    },
+    async mounted() {
+        this.list = await fetchList();
+        this.editors = await fetchEditors();
+
+        if (!this.list) {
+            this.errors = ["Failed to load list. Retry in a few minutes or notify list staff."];
+        } else {
+            this.errors.push(
+                ...this.list
+                    .filter(([_, err]) => err)
+                    .map(([_, err]) => `Failed to load level. (${err}.json)`)
             );
-    },
-    legacyList() {
-        return this.list
-            .map((entry, i) => [entry, i])
-            .filter(([_, i]) => i + 1 > 150)
-            .filter(([[level], _]) => 
-                !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-            );
-    },
-    level() {
-        return this.list[this.selected][0];
-    },
-    video() {
-        if (!this.level.showcase) {
-            return embed(this.level.verification);
+            if (!this.editors) this.errors.push("Failed to load list editors.");
         }
 
-        return embed(
-            this.toggledShowcase
-                ? this.level.showcase
-                : this.level.verification
-        );
+        this.loading = false;
     },
-},
-async mounted() {
-    // Hide loading spinner
-    this.list = await fetchList();
-    this.editors = await fetchEditors();
-
-    // Error handling
-    if (!this.list) {
-        this.errors = [
-            "Failed to load list. Retry in a few minutes or notify list staff.",
-        ];
-    } else {
-        this.errors.push(
-            ...this.list
-                .filter(([_, err]) => err)
-                .map(([_, err]) => {
-                    return `Failed to load level. (${err}.json)`;
-                })
-        );
-        if (!this.editors) {
-            this.errors.push("Failed to load list editors.");
-        }
-    }
-
-    this.loading = false;
-},
-methods: {
-    embed,
-    score,
-},
+    methods: {
+        embed,
+        score,
+    },
 };
