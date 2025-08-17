@@ -23,9 +23,17 @@ export default {
         <main v-else class="page-list">
             <div class="list-container">
                 
-<h2 class="section-title"></h2>
-<table class="list" v-if="mainList.length">
-<tr v-for="([level, err], i) in mainList">
+                <!-- 🔎 Search bar -->
+                <input 
+                    type="text" 
+                    v-model="searchQuery" 
+                    placeholder="Search by level name..." 
+                    class="search-bar"
+                />
+
+                <h2 class="section-title"></h2>
+                <table class="list" v-if="mainList.length">
+                    <tr v-for="([level, err], i) in mainList">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">——</p>
@@ -36,10 +44,11 @@ export default {
                             </button>
                         </td>
                     </tr>
-</table>
-<h2 class="section-title" style="margin-top: 1rem; margin-bottom: 2rem;">Legacy</h2>
-<table class="list" v-if="legacyList.length">
-<tr v-for="([level, err], i) in legacyList">
+                </table>
+
+                <h2 class="section-title" style="margin-top: 1rem; margin-bottom: 2rem;">Legacy</h2>
+                <table class="list" v-if="legacyList.length">
+                    <tr v-for="([level, err], i) in legacyList">
                         <td class="rank">
                             <p class="type-label-lg">———</p>
                         </td>
@@ -49,7 +58,7 @@ export default {
                             </button>
                         </td>
                     </tr>
-</table>
+                </table>
 
             </div>
             <div class="level-container">
@@ -110,12 +119,11 @@ export default {
                                 <p v-else>{{ editor.name }}</p>
                             </li>
                         </ol>
-                                            </template>
+                    </template>
                     <h3>Level Records</h3>
-                           <p>
+                    <p>
                         Some levels in the list have a different video displayed instead of the first victor's. This is because the original victor's video was either not published publicly or not uploaded at all.
                     </p>
-                    </template>
                     <h3>Submission Requirements</h3>
                     <p>
                         Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps)
@@ -152,17 +160,22 @@ export default {
         selected: 0,
         errors: [],
         roleIconMap,
-        store
+        store,
+        searchQuery: "" // 🔎 new reactive property
     }),
     computed: {
-
         mainList() {
-            return this.list.filter((_, i) => i + 1 <= 150);
+            return this.list.filter((_, i) => i + 1 <= 150)
+                .filter(([level]) => 
+                    !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
         },
         legacyList() {
-            return this.list.filter((_, i) => i + 1 > 150);
+            return this.list.filter((_, i) => i + 1 > 150)
+                .filter(([level]) => 
+                    !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
         },
-
         level() {
             return this.list[this.selected][0];
         },
