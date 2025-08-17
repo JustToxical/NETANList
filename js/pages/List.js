@@ -163,61 +163,66 @@ export default {
         store,
         searchQuery: "" // 🔎 new reactive property
     }),
-    computed: {
-        mainList() {
-            return this.list.filter((_, i) => i + 1 <= 150)
-                .filter(([level]) => 
-                    !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-                );
-        },
-        legacyList() {
-            return this.list.filter((_, i) => i + 1 > 150)
-                .filter(([level]) => 
-                    !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-                );
-        },
-        level() {
-            return this.list[this.selected][0];
-        },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
-
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
+computed: {
+    mainList() {
+        // include original index so rank numbers don't break
+        return this.list
+            .map((entry, i) => [entry, i]) // entry = [level, err], i = true index
+            .filter(([_, i]) => i + 1 <= 150)
+            .filter(([[level], _]) => 
+                !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
-        },
     },
-    async mounted() {
-        // Hide loading spinner
-        this.list = await fetchList();
-        this.editors = await fetchEditors();
-
-        // Error handling
-        if (!this.list) {
-            this.errors = [
-                "Failed to load list. Retry in a few minutes or notify list staff.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.list
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Failed to load level. (${err}.json)`;
-                    })
+    legacyList() {
+        return this.list
+            .map((entry, i) => [entry, i])
+            .filter(([_, i]) => i + 1 > 150)
+            .filter(([[level], _]) => 
+                !this.searchQuery || level?.name.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
-            if (!this.editors) {
-                this.errors.push("Failed to load list editors.");
-            }
+    },
+    level() {
+        return this.list[this.selected][0];
+    },
+    video() {
+        if (!this.level.showcase) {
+            return embed(this.level.verification);
         }
 
-        this.loading = false;
+        return embed(
+            this.toggledShowcase
+                ? this.level.showcase
+                : this.level.verification
+        );
     },
-    methods: {
-        embed,
-        score,
-    },
+},
+async mounted() {
+    // Hide loading spinner
+    this.list = await fetchList();
+    this.editors = await fetchEditors();
+
+    // Error handling
+    if (!this.list) {
+        this.errors = [
+            "Failed to load list. Retry in a few minutes or notify list staff.",
+        ];
+    } else {
+        this.errors.push(
+            ...this.list
+                .filter(([_, err]) => err)
+                .map(([_, err]) => {
+                    return `Failed to load level. (${err}.json)`;
+                })
+        );
+        if (!this.editors) {
+            this.errors.push("Failed to load list editors.");
+        }
+    }
+
+    this.loading = false;
+},
+methods: {
+    embed,
+    score,
+},
 };
