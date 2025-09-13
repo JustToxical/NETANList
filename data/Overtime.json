@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "Free To Copy",
     "records": [
+         {
+            "user": "cosmicspacemeow",
+            "link": "https://youtu.be/5FR2Gqf8bfs?si=mqc_oXcDIugyQvi7",
+            "percent": 100,
+            "hz": 480
+        }
     ]
 }
