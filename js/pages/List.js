@@ -120,11 +120,14 @@ export default {
                             </li>
                         </ol>
                     </template>
-                    <h3>Level Records</h3>
+                    <h3>Completion Uploads</h3>
                     <p>
                         Some levels in the list have a different video displayed instead of the first victor's. This is because the original victor's video was either not published publicly or not uploaded at all.
                     </p>
                     <h3>Submission Requirements</h3>
+                    <p>
+                        KEEP IN MIND: Records already accepted on lists with advanced moderation (i.e Pointercrate, AREDL, Global Demonlist) will instantly be accepted.
+                    </p>
                     <p>
                         Achieved the record without using hacks (CBF is allowed on the list)
                     </p>
