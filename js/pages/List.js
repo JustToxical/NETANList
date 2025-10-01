@@ -126,7 +126,7 @@ export default {
                     </p>
                     <h3>Submission Requirements</h3>
                     <p>
-                        KEEP IN MIND: Records already accepted on lists with advanced moderation (i.e Pointercrate, AREDL, Global Demonlist) will instantly be accepted.
+                        KEEP IN MIND: A record that has already been accepted on lists with advanced moderation (i.e Pointercrate, AREDL, Global Demonlist) will instantly be accepted.
                     </p>
                     <p>
                         Achieved the record without using hacks (CBF is allowed on the list)
