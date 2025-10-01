@@ -17,7 +17,7 @@ export default {
             </p>
             <div class="type-title-sm">Publisher</div>
             <p class="type-body">
-                <span>{{ publisher }}</span>
+                <span>{{ author }}</span>
             </p>
         </div>
     `,
