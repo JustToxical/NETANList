@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "111111",
     "records": [
+            {
+            "user": "TheCannonCarl",
+            "link": "https://www.youtube.com/watch?v=VbdXkR7ePEI",
+            "percent": 100,
+            "hz": 60
+        }
     ]
 }
