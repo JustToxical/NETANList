@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "Free To Copy",
     "records": [
+          {
+            "user": "Tiro_25",
+            "link": "https://www.youtube.com/watch?v=GMVPqPBLlJE&t=8s",
+            "percent": 100,
+            "hz": 240
+        }
     ]
 }
