@@ -8,5 +8,11 @@
     "percentToQualify": "100",
     "password": "No Copy",
     "records": [
+            {
+            "user": "Ephr31",
+            "link": "https://youtu.be/9HZxWNoyTJY?si=VtKTnrrxc35q1XzY",
+            "percent": 100,
+            "hz": 120
+        }
     ]
 }
